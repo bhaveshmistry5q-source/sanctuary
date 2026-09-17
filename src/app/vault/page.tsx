@@ -128,13 +128,12 @@ export default function VaultPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#070a13] text-[#e8e4d9] pb-32 !cursor-auto selection:bg-[#c9a876]/30">
+    <div className="min-h-screen bg-[#070a13] text-[#e8e4d9] pb-32 selection:bg-[#c9a876]/30">
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
         .font-handwriting { font-family: 'Caveat', cursive; }
         .font-serif-vintage { font-family: 'Fraunces', serif; }
         .font-mono-retro { font-family: 'IBM Plex Mono', monospace; }
-        * { cursor: auto !important; }
       `}</style>
 
       {/* Retro Grain Texture */}
@@ -147,21 +146,27 @@ export default function VaultPage() {
       />
 
       {/* Header */}
-      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#070a13]/85 border-b border-[#1c2438]">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#070a13]/70 border-b border-[#1c2438]/70">
+        <div className="max-w-6xl mx-auto px-6 py-3.5 flex justify-between items-center">
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs font-mono-retro uppercase tracking-widest text-[#8890a8] hover:text-[#c9a876] transition-colors"
+            aria-label="Back to Sanctuary"
+            className="group flex items-center gap-2 text-[#8890a8] hover:text-[#c9a876] transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Sanctuary</span>
+            <span className="w-8 h-8 rounded-full border border-[#1c2438] group-hover:border-[#c9a876]/40 flex items-center justify-center transition-colors">
+              <ArrowLeft className="w-3.5 h-3.5" />
+            </span>
+            <span className="text-[11px] font-mono-retro uppercase tracking-widest hidden sm:inline">
+              Sanctuary
+            </span>
           </Link>
+
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#c9a876] text-[#070a13] font-mono-retro text-xs uppercase tracking-wider rounded-md font-semibold hover:bg-[#d8b888] transition-all shadow-[0_4px_18px_-4px_rgba(201,168,118,0.4)]"
+            className="flex items-center gap-1.5 pl-3 pr-4 py-2 rounded-full border border-[#c9a876]/30 text-[#c9a876] hover:bg-[#c9a876]/10 hover:border-[#c9a876]/60 transition-all text-[11px] font-mono-retro uppercase tracking-wider"
           >
-            <Plus className="w-4 h-4" />
-            <span>Save a tiny forever</span>
+            <Plus className="w-3.5 h-3.5" />
+            <span>Save a memory</span>
           </button>
         </div>
       </header>

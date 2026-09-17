@@ -158,7 +158,7 @@ export default function TimelineResponsive() {
             <div key={`desk-${st.id}`}>
               <div
                 style={{ left: `${st.deskJunction.left}px`, top: `${st.deskJunction.top}px` }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] shadow-[0_0_12px_rgba(201,168,118,0.6)] z-20"
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] shadow-[0_0_12px_rgba(201,168,118,0.6)] z-10 pointer-events-none"
               />
 
               <div
@@ -167,11 +167,16 @@ export default function TimelineResponsive() {
                   top: `${st.deskCard.top}px`,
                   transform: `rotate(${st.deskCard.rotate}deg)`
                 }}
-                className="absolute w-[280px] bg-[#10152a] border border-[#232b47] hover:border-[#c9a876]/60 rounded-xl p-5 shadow-2xl z-10 transition-transform hover:scale-105"
+                className="absolute w-[280px] bg-[#10152a] border border-[#232b47] hover:border-[#c9a876]/60 rounded-xl p-5 shadow-2xl z-20 transition-transform hover:scale-105"
               >
-                <div className="flex justify-between items-center text-[10px] font-mono-retro text-[#8890a8] border-b border-[#232b47] pb-2 mb-2">
-                  <span className="text-[#c9a876]">{st.date}</span>
-                  <span>{st.milestone}</span>
+                {/* Vintage scrapbook tag */}
+                <div className="flex justify-between items-center gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 font-handwriting text-lg text-[#f5e4bd] bg-[#c9a876]/10 border border-[#c9a876]/30 px-2.5 py-0.5 rounded-full -rotate-1">
+                    ✦ {st.date}
+                  </span>
+                  <span className="text-[9px] font-mono-retro tracking-[0.15em] text-[#8890a8]/80 uppercase border-b border-dashed border-[#8890a8]/30 pb-0.5">
+                    {st.milestone}
+                  </span>
                 </div>
                 <h3 className="font-serif-vintage text-lg text-white mb-1">{st.title}</h3>
                 <p className="font-handwriting text-xl text-[#cfcabd] leading-snug">"{st.note}"</p>
@@ -223,9 +228,11 @@ export default function TimelineResponsive() {
         {/* Mobile Points & Cards */}
         {stops.map((st) => (
           <div key={`mob-${st.id}`}>
+            {/* Junction dot sits behind the card and has a soft halo instead of a hard edge,
+                so even where the path curves close to a card it never breaks into the text. */}
             <div
               style={{ left: `${st.mobJunction.left}px`, top: `${st.mobJunction.top}px` }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] shadow-[0_0_10px_rgba(201,168,118,0.5)] z-20"
+              className="absolute -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] shadow-[0_0_10px_rgba(201,168,118,0.5)] z-0 pointer-events-none"
             />
 
             <div
@@ -234,11 +241,16 @@ export default function TimelineResponsive() {
                 top: `${st.mobCard.top}px`,
                 transform: `rotate(${st.mobCard.rotate}deg)`
               }}
-              className="absolute w-[165px] bg-[#10152a] border border-[#232b47] rounded-xl p-3 shadow-xl z-10"
+              className="absolute w-[172px] bg-[#10152a] border border-[#232b47] rounded-xl p-3.5 shadow-xl z-20"
             >
-              <div className="flex justify-between items-center text-[8px] font-mono-retro text-[#8890a8] border-b border-[#232b47] pb-1 mb-1.5">
-                <span className="text-[#c9a876]">{st.date}</span>
-                <span>{st.milestone}</span>
+              {/* Vintage scrapbook tag */}
+              <div className="flex flex-col gap-1 border-b border-[#232b47] pb-1.5 mb-1.5">
+                <span className="self-start inline-flex items-center gap-1 font-handwriting text-sm text-[#f5e4bd] bg-[#c9a876]/10 border border-[#c9a876]/30 px-2 py-0.5 rounded-full -rotate-1">
+                  ✦ {st.date}
+                </span>
+                <span className="text-[7px] font-mono-retro tracking-[0.15em] text-[#8890a8]/80 uppercase">
+                  {st.milestone}
+                </span>
               </div>
               <h3 className="font-serif-vintage text-sm text-white font-medium mb-0.5">{st.title}</h3>
               <p className="font-handwriting text-sm text-[#cfcabd] leading-tight">"{st.note}"</p>

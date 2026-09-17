@@ -6,15 +6,24 @@ export default function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if modal was already seen
-    const hasSeen = localStorage.getItem('sanctuary_welcome_seen');
-    if (!hasSeen) {
-      setIsOpen(true);
+    // Check if modal was already seen — this popup should only ever show once
+    // per browser, so we gate it behind a localStorage flag.
+    try {
+      const hasSeen = localStorage.getItem('sanctuary_welcome_seen');
+      if (!hasSeen) {
+        setIsOpen(true);
+      }
+    } catch {
+      // localStorage unavailable (private browsing, etc.) — fail quietly, skip popup.
     }
   }, []);
 
   const handleClose = () => {
-    localStorage.setItem('sanctuary_welcome_seen', 'true');
+    try {
+      localStorage.setItem('sanctuary_welcome_seen', 'true');
+    } catch {
+      // ignore write failures
+    }
     setIsOpen(false);
   };
 
@@ -27,7 +36,7 @@ export default function WelcomeModal() {
           Hello Vaiduu ✨
         </h3>
         <p className="font-handwriting text-xl text-[#94a3b8] mb-6">
-          A piece of forever, carved out of time.
+          A piece of forever, carved out of time — Bhavii tarafthi, tara mate.
         </p>
 
         <button

@@ -29,7 +29,7 @@ export default function LoginPage() {
 
       window.location.href = '/';
     } else {
-      setError('Invalid username or secret passcode.');
+      setError("Hmm, that doesn't match. Try again, dhyan thi ✨");
     }
   }
 
@@ -40,7 +40,6 @@ export default function LoginPage() {
         .font-handwriting { font-family: 'Caveat', cursive; }
         .font-serif-vintage { font-family: 'Fraunces', serif; }
         .font-mono-retro { font-family: 'IBM Plex Mono', monospace; }
-        * { cursor: auto !important; }
       `}</style>
 
       {/* Atmospheric Soft Light Behind Glass */}

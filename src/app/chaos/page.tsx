@@ -56,7 +56,7 @@ const initialMoments: Moment[] = [
   }
 ];
 
-export default function UnplannedChronicles() {
+export default function SukoonCorner() {
   const [moments, setMoments] = useState<Moment[]>(initialMoments);
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState('');
@@ -132,7 +132,7 @@ export default function UnplannedChronicles() {
             <span>Sanctuary</span>
           </Link>
           <span className="font-handwriting text-2xl text-[#d4a34b]">
-            Beat me if you can ~
+            Just us, quietly ~
           </span>
         </div>
       </header>
@@ -142,21 +142,21 @@ export default function UnplannedChronicles() {
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0d172a] border border-[#d4a34b]/30 mb-3">
           <Sparkles className="w-3.5 h-3.5 text-[#d4a34b]" />
           <span className="text-[11px] font-mono-retro tracking-[2px] text-[#d4a34b] uppercase">
-            {moments.length} DOOM-LEVEL BORING HOURS
+            {moments.length} QUIET MOMENTS SAVED
           </span>
         </div>
         <h1 className="font-serif-title italic text-4xl md:text-5xl text-white font-normal mt-1">
-          The Boredom Hub
+          Sukoon Corner
         </h1>
         <p className="text-sm text-[#94a3b8] mt-2">
-          Cure your boredom here. Or don’t. Either way, I’m still going to win this little chaos war.
+          Vaiduu &amp; Bhavii's little quiet corner — no plans, no pressure, just the small moments worth keeping.
         </p>
 
         <button
           onClick={() => setShowModal(true)}
           className="mt-6 px-5 py-2.5 rounded-full bg-[#d4a34b] text-[#060b14] font-mono-retro font-bold text-xs tracking-wider flex items-center gap-2 mx-auto hover:bg-[#f5e4bd] transition-colors shadow-[0_0_20px_rgba(212,163,75,0.3)]"
         >
-          <Plus className="w-4 h-4 stroke-[3]" /> CURE YOUR BOREDOM HERE
+          <Plus className="w-4 h-4 stroke-[3]" /> ADD A QUIET MOMENT
         </button>
       </div>
 
@@ -194,9 +194,9 @@ export default function UnplannedChronicles() {
 
             {/* Bottom Stamp Marking */}
             <div className="mt-4 pt-3 flex justify-between items-center text-[11px] font-mono-retro text-[#64748b]">
-              <span>STAMP: CHAOS APPROVED</span>
+              <span>STAMP: SUKOON APPROVED</span>
               <span className="text-[#d4a34b]/70 flex items-center gap-1">
-                ✦ VAIDUU & YOU
+                ✦ VAIDUU & BHAVII
               </span>
             </div>
           </div>
@@ -208,10 +208,10 @@ export default function UnplannedChronicles() {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#0d172a] border border-[#d4a34b]/40 rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl relative">
             <h2 className="font-serif-title text-2xl text-white mb-1">
-              Log the chaos
+              Save this quiet moment
             </h2>
             <p className="text-xs text-[#94a3b8] mb-5">
-              Any stupid little moment. Any midnight nonsense. Any proof that Vaiduu makes everything better.
+              Any small thing. Any midnight thought. Any little proof that Vaiduu makes everything softer.
             </p>
 
             <form onSubmit={handleAddMoment} className="space-y-4">
@@ -276,7 +276,7 @@ export default function UnplannedChronicles() {
                   type="submit"
                   className="flex-1 py-2.5 rounded-xl bg-[#d4a34b] text-[#060b14] text-xs font-mono-retro font-bold hover:bg-[#f5e4bd]"
                 >
-                  SAVE THIS CHAOS
+                  SAVE THIS MOMENT
                 </button>
               </div>
             </form>

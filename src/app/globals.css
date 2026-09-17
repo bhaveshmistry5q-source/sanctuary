@@ -37,7 +37,10 @@ body {
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* Cursor Fix */
-* {
-  cursor: auto !important;
+/* Custom Cursor: hide the native system cursor everywhere so only
+   the custom spark cursor (CustomCursor.tsx) is visible. */
+*,
+*::before,
+*::after {
+  cursor: none !important;
 }

@@ -35,9 +35,9 @@ export default function SanctuaryDashboard() {
       num: '03'
     },
     {
-      title: 'The Boredom Hub',
+      title: 'Sukoon Corner',
       tag: 'LOUNGE',
-      desc: 'Bored thai gayi? Ahiya aav — thodi bakwas, thodu chaos, ane mane beat karvano try kar.',
+      desc: 'Jyare kai vichar na hoy, bas ahiya aavi jaje — thodi bakwas, ghani shanti, ane apna banne nu thoduk sukoon.',
       href: '/chaos',
       icon: Zap,
       num: '04'
@@ -167,6 +167,10 @@ export default function SanctuaryDashboard() {
             );
           })}
         </div>
+
+        <p className="text-center font-handwriting text-2xl text-[#8890a8] mt-14">
+          Banavyu, thodi shanti ane ghani mohabbat sathe — Bhavii, for Vaiduu.
+        </p>
       </main>
 
       <WelcomeModal />

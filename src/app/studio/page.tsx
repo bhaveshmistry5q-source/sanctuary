@@ -139,29 +139,29 @@ export default function CreativeStudio() {
       <div className="fixed bottom-0 -left-24 w-[600px] h-[600px] bg-[#1e3a6e]/25 blur-[160px] pointer-events-none rounded-full" />
 
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#060b14]/80 border-b border-[#d4a34b]/15">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 sm:py-4 flex flex-wrap gap-x-4 gap-y-1 justify-between items-center">
           <Link
             href="/"
-            className="flex items-center gap-2 text-[11px] font-mono-retro uppercase tracking-[2px] text-[#94a3b8] hover:text-[#d4a34b] transition-colors"
+            className="flex items-center gap-2 text-[11px] font-mono-retro uppercase tracking-[2px] text-[#94a3b8] hover:text-[#d4a34b] transition-colors shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Sanctuary</span>
           </Link>
-          <span className="font-handwriting text-3xl text-[#d4a34b]">Future Canvas &amp; Scribbles</span>
+          <span className="font-handwriting text-xl sm:text-2xl md:text-3xl text-[#d4a34b] leading-tight">Future Canvas &amp; Scribbles</span>
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 pt-10 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-10 px-2">
           <span className="text-[11px] font-mono-retro tracking-[3px] text-[#d4a34b] uppercase">Sanctuary // Creative Studio</span>
-          <h1 className="font-serif-vintage text-4xl md:text-6xl text-white mt-4 leading-none">Creative Studio</h1>
+          <h1 className="font-serif-vintage text-3xl sm:text-4xl md:text-6xl text-white mt-4 leading-tight sm:leading-none">Creative Studio</h1>
           <p className="text-sm md:text-base text-[#94a3b8] mt-4 leading-relaxed">
             A place for all the tiny forever plans, the silly little escapes, and the stuff I keep wanting to do with you.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
-          <section className="xl:col-span-7 rounded-[28px] border border-[#d4a34b]/20 bg-[#0d172a]/60 backdrop-blur-2xl p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+          <section className="lg:col-span-7 rounded-[24px] sm:rounded-[28px] border border-[#d4a34b]/20 bg-[#0d172a]/60 backdrop-blur-2xl p-4 sm:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)]">
             <div className="flex items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#d4a34b]" />
@@ -221,8 +221,8 @@ export default function CreativeStudio() {
             </div>
           </section>
 
-          <aside className="xl:col-span-5 space-y-8">
-            <div className="rounded-[28px] border border-[#d4a34b]/20 bg-[#0d172a]/60 backdrop-blur-2xl p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)]">
+          <aside className="lg:col-span-5 space-y-6 sm:space-y-8">
+            <div className="rounded-[24px] sm:rounded-[28px] border border-[#d4a34b]/20 bg-[#0d172a]/60 backdrop-blur-2xl p-4 sm:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)]">
               <div className="flex items-center gap-2 mb-5">
                 <Sparkles className="w-4 h-4 text-[#d4a34b]" />
                 <h2 className="font-serif-vintage text-2xl text-white">Pinned Notes</h2>
@@ -270,7 +270,7 @@ export default function CreativeStudio() {
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-[#d4a34b]/20 bg-[#0d172a]/60 backdrop-blur-2xl p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)]">
+            <div className="rounded-[24px] sm:rounded-[28px] border border-[#d4a34b]/20 bg-[#0d172a]/60 backdrop-blur-2xl p-4 sm:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)]">
               <div className="flex items-center gap-2 mb-5">
                 <Route className="w-4 h-4 text-[#d4a34b]" />
                 <h2 className="font-serif-vintage text-2xl text-white">Roadmap</h2>
