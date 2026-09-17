@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanctuary — Royal Frosted Glass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060b14;
+      --card-bg: rgba(13, 23, 42, 0.65);
+      --card-border: rgba(212, 163, 75, 0.22);
+      --card-hover-border: rgba(212, 163, 75, 0.55);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --gold: #d4a34b;
+      --gold-light: #f5e4bd;
+      --navy-glow: rgba(30, 58, 110, 0.45);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 80px;
+    }
+
+    /* Ambient Flares in Royal Navy & Gold */
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(130px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .glow-1 {
+      width: 520px;
+      height: 520px;
+      top: -120px;
+      right: -80px;
+      background: rgba(212, 163, 75, 0.14);
+    }
+    .glow-2 {
+      width: 580px;
+      height: 580px;
+      bottom: -60px;
+      left: -90px;
+      background: var(--navy-glow);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(6, 11, 20, 0.75);
+      border-bottom: 1px solid rgba(212, 163, 75, 0.15);
+    }
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+    .gold-badge-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #8a6421);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #060b14;
+      font-weight: 700;
+    }
+    .badge {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(13, 23, 42, 0.85);
+      border: 1px solid var(--card-border);
+      color: var(--gold-light);
+    }
+
+    main { max-width: 1040px; margin: 0 auto; padding: 54px 24px 0; position: relative; z-index: 10; }
+    .hero { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5.5vw, 56px);
+      line-height: 1.18;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    .headline em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .subtext {
+      margin-top: 18px;
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+    .frosted-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 30px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .frosted-card:hover {
+      transform: translateY(-6px);
+      background: rgba(18, 32, 58, 0.85);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 163, 75, 0.12);
+    }
+    .top-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+    .icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(212, 163, 75, 0.1);
+      border: 1px solid rgba(212, 163, 75, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .card-desc { font-size: 13.5px; line-height: 1.65; color: var(--text-muted); }
+    .footer {
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="gold-badge-dot">✦</div>
+        <span>Sanctuary</span>
+      </div>
+      <div class="badge">Bond & Future Forever</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="tag">✦ Our Timeless Space</span>
+      <h1 class="headline">A piece of forever,<br><em>carved out of time.</em></h1>
+      <p class="subtext">From strangers to inseparable souls — every whisper, every laugh, and every quiet promise, safely kept right here.</p>
+    </section>
+
+    <div class="grid">
+      <!-- Card 1 -->
+      <div class="frosted-card">
+        <div>
+          <div class="top-meta">
+            <div class="icon-wrapper">🛤️</div>
+          </div>
+          <h2 class="card-title">Soul Metro Line</h2>
+          <p class="card-desc">The royal path tracking every milestone and chapter from the start.</p>
+        </div>
+        <div class="footer">
+          <span>Explore line →</span>
+          <span>01</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="frosted-card">
+        <div>
+          <div class="top-meta">
+            <div class="icon-wrapper">📷</div>
+          </div>
+          <h2 class="card-title">Memory Vault</h2>
+          <p class="card-desc">Unspoken memories, candid polaroids, and frames kept close forever.</p>
+        </div>
+        <div class="footer">
+          <span>Open vault →</span>
+          <span>02</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="frosted-card">
+        <div>
+          <div class="top-meta">
+            <div class="icon-wrapper">🌿</div>
+          </div>
+          <h2 class="card-title">Creative Studio</h2>
+          <p class="card-desc">Plan trips, scribble shared bucket lists, and pin upcoming adventures.</p>
+        </div>
+        <div class="footer">
+          <span>Start planning →</span>
+          <span>03</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="frosted-card">
+        <div>
+          <div class="top-meta">
+            <div class="icon-wrapper">🎈</div>
+          </div>
+          <h2 class="card-title">The Boredom Hub</h2>
+          <p class="card-desc">Gentle screen taps, little games, and distractions for quiet hours.</p>
+        </div>
+        <div class="footer">
+          <span>Unwind lounge →</span>
+          <span>04</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
