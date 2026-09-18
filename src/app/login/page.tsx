@@ -26,6 +26,9 @@ export default function LoginPage() {
       setIsSuccess(true);
       localStorage.setItem('sanctuary_user', authenticatedUser);
       localStorage.setItem('sanctuary_auth', 'true');
+      // Cookie (not localStorage) is what middleware checks on every request,
+      // since middleware runs on the server and can't read localStorage.
+      document.cookie = 'sanctuary_auth=true; path=/; max-age=2592000; samesite=lax';
 
       window.location.href = '/';
     } else {

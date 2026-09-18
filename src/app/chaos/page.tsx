@@ -56,7 +56,7 @@ const initialMoments: Moment[] = [
   }
 ];
 
-export default function SukoonCorner() {
+export default function ApniJagya() {
   const [moments, setMoments] = useState<Moment[]>(initialMoments);
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState('');
@@ -146,10 +146,10 @@ export default function SukoonCorner() {
           </span>
         </div>
         <h1 className="font-serif-title italic text-4xl md:text-5xl text-white font-normal mt-1">
-          Sukoon Corner
+          Apni Jagya
         </h1>
-        <p className="text-sm text-[#94a3b8] mt-2">
-          Vaiduu &amp; Bhavii's little quiet corner — no plans, no pressure, just the small moments worth keeping.
+        <p className="text-sm text-[#94a3b8] mt-2 max-w-sm mx-auto">
+          Jya kai prove karvani jarur nathi, bas hovu j kafi che — Vaiduu &amp; Bhavii nu ek eklu khunu, dunia thi thodu chhupu.
         </p>
 
         <button

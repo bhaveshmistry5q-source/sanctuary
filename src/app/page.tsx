@@ -35,9 +35,9 @@ export default function SanctuaryDashboard() {
       num: '03'
     },
     {
-      title: 'Sukoon Corner',
+      title: 'Apni Jagya',
       tag: 'LOUNGE',
-      desc: 'Jyare kai vichar na hoy, bas ahiya aavi jaje — thodi bakwas, ghani shanti, ane apna banne nu thoduk sukoon.',
+      desc: 'Jya kai prove karvani jarur nathi, bas hovu j kafi che — apna banne nu ek eklu, sukoon-bharyu khunu.',
       href: '/chaos',
       icon: Zap,
       num: '04'

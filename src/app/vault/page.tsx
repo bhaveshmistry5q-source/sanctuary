@@ -146,27 +146,28 @@ export default function VaultPage() {
       />
 
       {/* Header */}
-      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#070a13]/70 border-b border-[#1c2438]/70">
-        <div className="max-w-6xl mx-auto px-6 py-3.5 flex justify-between items-center">
+      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#070a13]/70 border-b border-[#1c2438]/50">
+        <div className="max-w-6xl mx-auto px-5 py-3 flex justify-between items-center">
           <Link
             href="/"
             aria-label="Back to Sanctuary"
-            className="group flex items-center gap-2 text-[#8890a8] hover:text-[#c9a876] transition-colors"
+            className="flex items-center gap-1.5 text-[#8890a8] hover:text-[#c9a876] transition-colors -ml-1.5 p-1.5 rounded-full hover:bg-[#c9a876]/5"
           >
-            <span className="w-8 h-8 rounded-full border border-[#1c2438] group-hover:border-[#c9a876]/40 flex items-center justify-center transition-colors">
-              <ArrowLeft className="w-3.5 h-3.5" />
-            </span>
-            <span className="text-[11px] font-mono-retro uppercase tracking-widest hidden sm:inline">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-[10px] font-mono-retro uppercase tracking-widest hidden sm:inline">
               Sanctuary
             </span>
           </Link>
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-1.5 pl-3 pr-4 py-2 rounded-full border border-[#c9a876]/30 text-[#c9a876] hover:bg-[#c9a876]/10 hover:border-[#c9a876]/60 transition-all text-[11px] font-mono-retro uppercase tracking-wider"
+            aria-label="Save a memory"
+            className="flex items-center gap-1.5 text-[#c9a876] hover:text-[#f3ede2] transition-colors text-[11px] font-mono-retro uppercase tracking-wider"
           >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Save a memory</span>
+            <span className="w-6 h-6 rounded-full border border-[#c9a876]/40 flex items-center justify-center">
+              <Plus className="w-3 h-3" />
+            </span>
+            <span className="hidden sm:inline">Save a memory</span>
           </button>
         </div>
       </header>
@@ -206,10 +207,13 @@ export default function VaultPage() {
         )}
 
         {!isLoading && !loadError && memories.length === 0 && (
-          <div className="max-w-md mx-auto p-16 border-2 border-dashed border-[#1c2438] rounded-xl text-center bg-[#0c101d]/60">
-            <p className="font-handwriting text-4xl text-[#c9a876]">No tiny forever saved yet.</p>
-            <p className="text-xs font-mono-retro text-[#8890a8] mt-2">
-              Tap &apos;Save a tiny forever&apos; above and pin your first little memory, photo, video, or voice note.
+          <div className="max-w-md mx-auto py-20 px-8 border border-dashed border-[#1c2438] rounded-2xl text-center bg-[#0c101d]/50">
+            <span className="text-2xl mb-3 block opacity-70">✦</span>
+            <p className="font-handwriting text-3xl text-[#c9a876] leading-snug">
+              Aa jagya khali che, bas tara memories ni raah jue che.
+            </p>
+            <p className="text-xs font-mono-retro text-[#8890a8]/80 mt-4 tracking-wide">
+              "Save a memory" par tap karo ane pehli keepsake pin karo.
             </p>
           </div>
         )}

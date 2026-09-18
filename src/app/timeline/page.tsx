@@ -13,10 +13,8 @@ interface StopItem {
   deskJunction: { left: number; top: number };
   deskCard: { left: number; top: number; rotate: number };
   deskBranch: string;
-  // Mobile Coordinates (Vertical)
-  mobJunction: { left: number; top: number };
-  mobCard: { left: number; top: number; rotate: number };
-  mobBranch: string;
+  // Mobile: small alternating tilt only — position comes from normal document flow now.
+  mobRotate: number;
 }
 
 const stops: StopItem[] = [
@@ -29,9 +27,7 @@ const stops: StopItem[] = [
     deskJunction: { left: 240, top: 390 },
     deskCard: { left: 110, top: 445, rotate: -2 },
     deskBranch: 'M 240 390 Q 240 420 250 445',
-    mobJunction: { left: 190, top: 160 },
-    mobCard: { left: 195, top: 80, rotate: 2 },
-    mobBranch: 'M 190 160 Q 200 130 210 120'
+    mobRotate: 1.5
   },
   {
     id: 2,
@@ -42,9 +38,7 @@ const stops: StopItem[] = [
     deskJunction: { left: 600, top: 315 },
     deskCard: { left: 465, top: 85, rotate: 2 },
     deskBranch: 'M 600 315 Q 600 235 600 190',
-    mobJunction: { left: 130, top: 380 },
-    mobCard: { left: 20, top: 330, rotate: -3 },
-    mobBranch: 'M 130 380 Q 90 370 70 380'
+    mobRotate: -1.5
   },
   {
     id: 3,
@@ -55,9 +49,7 @@ const stops: StopItem[] = [
     deskJunction: { left: 960, top: 365 },
     deskCard: { left: 825, top: 425, rotate: -2 },
     deskBranch: 'M 960 365 Q 960 400 965 425',
-    mobJunction: { left: 230, top: 620 },
-    mobCard: { left: 210, top: 560, rotate: 2 },
-    mobBranch: 'M 230 620 Q 240 600 250 600'
+    mobRotate: 1.5
   },
   {
     id: 4,
@@ -68,9 +60,7 @@ const stops: StopItem[] = [
     deskJunction: { left: 1280, top: 270 },
     deskCard: { left: 1140, top: 65, rotate: 2 },
     deskBranch: 'M 1280 270 Q 1280 190 1280 165',
-    mobJunction: { left: 150, top: 860 },
-    mobCard: { left: 25, top: 810, rotate: -2 },
-    mobBranch: 'M 150 860 Q 110 850 90 860'
+    mobRotate: -1.5
   }
 ];
 
@@ -195,73 +185,45 @@ export default function TimelineResponsive() {
 
       {/* ========================================================
           2. MOBILE VIEW: VERTICAL SCROLL (Ubhu)
+          Uses normal document flow (not absolute pixel coordinates),
+          so the dot and the card text can never mathematically overlap —
+          the card is always pushed a fixed, guaranteed gap to the right of the line.
       ======================================================== */}
-      <div className="block lg:hidden relative w-full max-w-[390px] h-[1150px] mx-auto mt-4 px-2">
-        
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 390 1150">
-          {/* Vertical Winding Path */}
-          <path
-            d="M 190 30
-             C 190 85, 190 125, 190 160
-             C 190 255, 150 315, 130 380
-             C 105 470, 195 555, 230 620
-             C 275 710, 190 790, 150 860
-             C 125 945, 165 1015, 190 1080"
-            stroke="rgba(201, 168, 118, 0.45)"
-            strokeWidth="2.5"
-            fill="none"
-            strokeDasharray="4 6"
-          />
-          {/* Mobile Branches */}
+      <div className="block lg:hidden relative w-full max-w-md mx-auto mt-6 px-5">
+        {/* Central vertical line */}
+        <div className="absolute left-[27px] top-2 bottom-2 w-px bg-gradient-to-b from-[#c9a876]/70 via-[#c9a876]/25 to-transparent" />
+
+        <div className="flex flex-col gap-9">
           {stops.map((st) => (
-            <path
-              key={`mob-branch-${st.id}`}
-              d={st.mobBranch}
-              stroke="#232b47"
-              strokeWidth="1.8"
-              fill="none"
-              strokeDasharray="2 4"
-            />
-          ))}
-        </svg>
+            <div key={`mob-${st.id}`} className="relative pl-12">
+              {/* Dot sits fixed on the line, vertically centered on the card's top padding —
+                  it never needs to know the card's height or text length. */}
+              <span className="absolute left-[19px] top-4 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] shadow-[0_0_10px_rgba(201,168,118,0.5)] z-10" />
 
-        {/* Mobile Points & Cards */}
-        {stops.map((st) => (
-          <div key={`mob-${st.id}`}>
-            {/* Junction dot sits behind the card and has a soft halo instead of a hard edge,
-                so even where the path curves close to a card it never breaks into the text. */}
-            <div
-              style={{ left: `${st.mobJunction.left}px`, top: `${st.mobJunction.top}px` }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] shadow-[0_0_10px_rgba(201,168,118,0.5)] z-0 pointer-events-none"
-            />
-
-            <div
-              style={{
-                left: `${st.mobCard.left}px`,
-                top: `${st.mobCard.top}px`,
-                transform: `rotate(${st.mobCard.rotate}deg)`
-              }}
-              className="absolute w-[172px] bg-[#10152a] border border-[#232b47] rounded-xl p-3.5 shadow-xl z-20"
-            >
-              {/* Vintage scrapbook tag */}
-              <div className="flex flex-col gap-1 border-b border-[#232b47] pb-1.5 mb-1.5">
-                <span className="self-start inline-flex items-center gap-1 font-handwriting text-sm text-[#f5e4bd] bg-[#c9a876]/10 border border-[#c9a876]/30 px-2 py-0.5 rounded-full -rotate-1">
-                  ✦ {st.date}
-                </span>
-                <span className="text-[7px] font-mono-retro tracking-[0.15em] text-[#8890a8]/80 uppercase">
-                  {st.milestone}
-                </span>
+              <div
+                style={{ transform: `rotate(${st.mobRotate}deg)` }}
+                className="w-full bg-[#10152a] border border-[#232b47] rounded-xl p-4 shadow-xl"
+              >
+                {/* Vintage scrapbook tag */}
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-[#232b47] pb-2 mb-2">
+                  <span className="inline-flex items-center gap-1 font-handwriting text-base text-[#f5e4bd] bg-[#c9a876]/10 border border-[#c9a876]/30 px-2.5 py-0.5 rounded-full -rotate-1">
+                    ✦ {st.date}
+                  </span>
+                  <span className="text-[8px] font-mono-retro tracking-[0.15em] text-[#8890a8]/80 uppercase">
+                    {st.milestone}
+                  </span>
+                </div>
+                <h3 className="font-serif-vintage text-base text-white font-medium mb-1">{st.title}</h3>
+                <p className="font-handwriting text-base text-[#cfcabd] leading-snug">"{st.note}"</p>
               </div>
-              <h3 className="font-serif-vintage text-sm text-white font-medium mb-0.5">{st.title}</h3>
-              <p className="font-handwriting text-sm text-[#cfcabd] leading-tight">"{st.note}"</p>
             </div>
-          </div>
-        ))}
+          ))}
 
-        {/* Mobile End Marker */}
-        <div className="absolute top-[1090px] left-[190px] -translate-x-1/2 text-center z-10">
-          <div className="w-3.5 h-3.5 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] mx-auto mb-1 animate-pulse" />
-          <span className="font-handwriting text-lg text-[#c9a876] whitespace-nowrap">Us & us ✦</span>
+          {/* End marker, same flow so it lines up on the same guaranteed-gap column */}
+          <div className="relative pl-12">
+            <span className="absolute left-[19px] top-1 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-[#0a0e1a] border-2 border-[#c9a876] animate-pulse" />
+            <span className="font-handwriting text-xl text-[#c9a876]">Us & us ✦</span>
+          </div>
         </div>
       </div>
 
